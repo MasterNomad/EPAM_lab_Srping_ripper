@@ -1,6 +1,7 @@
 package base.quoter;
 
 import base.annotation.InjectRandomInt;
+import base.annotation.PostProxy;
 import base.annotation.Profiling;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,7 @@ public class Quoter implements IQuoter {
     }
 
     @Override
+    @PostProxy
     public void sayQuote() {
         IntStream.range(0, repeat).forEach(i -> System.out.println(message));
         System.out.println();

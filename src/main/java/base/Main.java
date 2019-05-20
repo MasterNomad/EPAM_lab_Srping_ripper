@@ -9,10 +9,10 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        while (true) {
-            Thread.sleep(1000);
-            context.getBean(IQuoter.class).sayQuote();
-        }
+//        while (true) {
+//            Thread.sleep(1000);
+//            context.getBean(IQuoter.class).sayQuote();
+//        }
     }
 
 }
