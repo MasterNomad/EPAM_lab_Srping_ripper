@@ -1,18 +1,18 @@
 package base;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import base.config.AppConfig;
 import base.quoter.IQuoter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@ComponentScan
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        context.getBean(IQuoter.class).sayQuote();
+        while (true) {
+            Thread.sleep(1000);
+            context.getBean(IQuoter.class).sayQuote();
+        }
     }
 
 }

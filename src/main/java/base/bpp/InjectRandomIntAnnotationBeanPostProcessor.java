@@ -1,5 +1,6 @@
-package base.annotation;
+package base.bpp;
 
+import base.annotation.InjectRandomInt;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,7 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
                         int randomInt = min + random.nextInt(max - min);
                         field.setAccessible(true);
                         ReflectionUtils.setField(field, bean, randomInt);
+                        System.out.println("Inject random = " + randomInt);
                     }
                 }
         );
@@ -31,6 +33,6 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        return null;
+        return bean;
     }
 }
